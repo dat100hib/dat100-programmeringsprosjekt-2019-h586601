@@ -1,75 +1,87 @@
 package no.hvl.dat100ptc.oppgave1;
 
-import no.hvl.dat100ptc.TODO;
-
 public class GPSPoint {
 
-	// TODO - objektvariable
+	// TODO - Objektvariable
+	
+	private int time;
+	private double latitude;
+	private double longitude;
+	private double elevation;
+	
 		
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
-		// TODO - konstruktur
+		// TODO - Konstruktur
 
-		throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
+		this.time = time;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.elevation = elevation;
 
 	}
 
 	// TODO - get/set metoder
 	public int getTime() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return time;
 		
 	}
 
 	public void setTime(int time) {
 				
-		throw new UnsupportedOperationException(TODO.method());
+		this.time = time;
 
 	}
 
 	public double getLatitude() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return latitude;
 		
 	}
 
 	public void setLatitude(double latitude) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		this.latitude = latitude;
 		
 	}
 
 	public double getLongitude() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return longitude;
 		
 	}
 
 	public void setLongitude(double longitude) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		this.longitude = longitude;
 		
 	}
 
 	public double getElevation() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return elevation;
 		
 	}
 
 	public void setElevation(double elevation) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		this.elevation = elevation;
 		
 	}
 	
-	public String toString() {
+//	Metode som returnerer en tekstlig versjon av et objekt
+//	I dette tilfelle skal det vise 1 (2.0,3.0) 5.0\n
+//	1 dag, 2.0 breddegrad, 3.0 lengdegrad og 5.0 er høyden
+	
+	public String toString() { 
 		
 		String str;
 		
 		// TODO - start
-
-		throw new UnsupportedOperationException(TODO.method());
+		
+		str = time + " (" + latitude + "," + longitude + ") " + elevation + "\n";
+		return str;
 
 		// TODO - slutt
 		
