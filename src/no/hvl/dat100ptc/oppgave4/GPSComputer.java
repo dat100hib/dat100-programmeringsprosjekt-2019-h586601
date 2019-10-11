@@ -33,7 +33,11 @@ public class GPSComputer {
 
 		// TODO - START
 
-		throw new UnsupportedOperationException(TODO.method());
+		for (int pos = 0; pos < gpspoints.length-1; pos++) {
+			distance += GPSUtils.distance(gpspoints[pos], gpspoints[pos+1]);
+		}
+		
+		return distance;
 
 		// TODO - SLUTT
 
@@ -43,10 +47,20 @@ public class GPSComputer {
 	public double totalElevation() {
 
 		double elevation = 0;
-
+		
 		// TODO - START
 
-		throw new UnsupportedOperationException(TODO.method());
+		for (int pos = 0; pos < gpspoints.length-1; pos++) {
+			
+			double posElevation = gpspoints[pos].getElevation();
+			double pos1Elevation = gpspoints[pos+1].getElevation();
+			
+			if (posElevation < pos1Elevation)
+			elevation += pos1Elevation - posElevation;
+		}
+		
+		return elevation;
+		
 
 		// TODO - SLUTT
 
@@ -54,18 +68,27 @@ public class GPSComputer {
 
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
-
-		throw new UnsupportedOperationException(TODO.method());
-
+		
+		int sistePos = gpspoints.length-1;
+		int forstePos = 0;
+		
+		int totalTid = gpspoints[sistePos].getTime() - gpspoints[forstePos].getTime();
+		
+		return totalTid;
 	}
 		
 	// beregn gjennomsnitshastighets mellom hver av gps punktene
-
 	public double[] speeds() {
 		
-		// TODO - START		// OPPGAVE - START
+		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double[] gjennomsnitt = new double[gpspoints.length-1];
+		
+		for (int pos = 0; pos < gpspoints.length-1; pos++) {
+			gjennomsnitt[pos] = GPSUtils.speed(gpspoints[pos], gpspoints[pos+1]);
+		}
+		
+		return gjennomsnitt;
 
 		// TODO - SLUTT
 
@@ -77,7 +100,9 @@ public class GPSComputer {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		maxspeed = GPSUtils.findMax(speeds());
+		
+		return maxspeed;
 		
 		// TODO - SLUTT
 		
@@ -89,7 +114,9 @@ public class GPSComputer {
 		
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		average = (totalDistance()/totalTime())*60*60/1000;
+		
+		return average;
 		
 		// TODO - SLUTT
 		
@@ -112,7 +139,7 @@ public class GPSComputer {
 
 		double kcal;
 
-		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
+		// MET: Metabolic equivalent of task angir (kcal / kg-1 x h-1)
 		double met = 0;		
 		double speedmph = speed * MS;
 
