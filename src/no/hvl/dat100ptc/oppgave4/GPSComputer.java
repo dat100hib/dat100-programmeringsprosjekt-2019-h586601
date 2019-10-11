@@ -1,9 +1,7 @@
 package no.hvl.dat100ptc.oppgave4;
 
-import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.oppgave2.GPSData;
-import no.hvl.dat100ptc.oppgave2.GPSDataConverter;
 import no.hvl.dat100ptc.oppgave2.GPSDataFileReader;
 import no.hvl.dat100ptc.oppgave3.GPSUtils;
 
@@ -122,14 +120,6 @@ public class GPSComputer {
 		
 	}
 
-	/*
-	 * bicycling, <10 mph, leisure, to work or for pleasure 4.0 bicycling,
-	 * general 8.0 bicycling, 10-11.9 mph, leisure, slow, light effort 6.0
-	 * bicycling, 12-13.9 mph, leisure, moderate effort 8.0 bicycling, 14-15.9
-	 * mph, racing or leisure, fast, vigorous effort 10.0 bicycling, 16-19 mph,
-	 * racing/not drafting or >19 mph drafting, very fast, racing general 12.0
-	 * bicycling, >20 mph, racing, not drafting 16.0
-	 */
 
 	// conversion factor m/s to miles per hour
 	public static double MS = 2.236936;
@@ -139,7 +129,6 @@ public class GPSComputer {
 
 		double kcal;
 
-		// MET: Metabolic equivalent of task angir (kcal / kg-1 x h-1)
 		double met = 0;		
 		double speedmph = speed * MS;
 
@@ -174,8 +163,7 @@ public class GPSComputer {
 		double totalkcal = 0;
 
 		// TODO - START
-		// Denne vil ikke gå gjennom. Forstår ikke hvorfor. Skriver ut 0.0 istedenfor 28.44
-		// #whocaresaboutcalories
+	
 		
 		double[] Hastighet = speeds();
 		int[] Tider = GPSUtils.getTimes(gpspoints);
