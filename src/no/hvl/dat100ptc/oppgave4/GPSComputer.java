@@ -144,8 +144,26 @@ public class GPSComputer {
 		double speedmph = speed * MS;
 
 		// TODO - START
+		// Kan også skrives med tabeller.
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (speedmph < 10)
+			met = 4.0;
+		else if (speedmph >= 10 && speedmph < 12)
+			met = 6.0;
+		else if (speedmph >= 12 && speedmph < 14)
+			met = 8.0;
+		else if (speedmph >= 14 && speedmph < 16)
+			met = 10.0;
+		else if (speedmph >= 16 && speedmph < 20)
+			met = 12.0;
+		else
+			met = 16.0;
+		
+		double hr = secs/3600;
+		
+		kcal = met * weight * hr;
+		
+		return kcal;
 
 		// TODO - SLUTT
 		
@@ -156,8 +174,17 @@ public class GPSComputer {
 		double totalkcal = 0;
 
 		// TODO - START
+		// Denne vil ikke gå gjennom. Forstår ikke hvorfor. Skriver ut 0.0 istedenfor 28.44
+		// #whocaresaboutcalories
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double[] Hastighet = speeds();
+		int[] Tider = GPSUtils.getTimes(gpspoints);
+		
+		for (int pos = 0; pos < Hastighet.length; pos++) {
+			totalkcal += kcal(weight, (Tider[pos+1] - Tider[pos]), Hastighet[pos]);
+		}
+		
+		return totalkcal;
 
 		// TODO - SLUTT
 		
@@ -171,9 +198,16 @@ public class GPSComputer {
 
 		// TODO - START
 
-		throw new UnsupportedOperationException(TODO.method());
+		System.out.println("Total time     : " + GPSUtils.formatTime(totalTime()));
+		System.out.println("Total distance : " + GPSUtils.formatDouble(totalDistance()/1000.0) + " km");
+		System.out.println("Total elevation: " + GPSUtils.formatDouble(totalElevation()) + " m");
+		System.out.println("Max speed      : " + GPSUtils.formatDouble(maxSpeed()) + " km/t");
+		System.out.println("Average speed  : " + GPSUtils.formatDouble(averageSpeed()) + " km/t");
+		System.out.println("Energy         :        " + totalKcal(WEIGHT) + " kcal");
 		
 		// TODO - SLUTT
+		
+		System.out.println("==============================================");
 		
 	}
 

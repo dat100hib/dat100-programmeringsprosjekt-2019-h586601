@@ -71,6 +71,22 @@ public class GPSUtils {
 		// TODO - SLUTT
 
 	}
+	
+	public static int[] getTimes(GPSPoint[] gpspoints) {
+
+		// TODO - START
+
+		int[] timeTab = new int[gpspoints.length];
+		
+		for (int pos = 0; pos < gpspoints.length; pos++) {
+			timeTab[pos] = gpspoints[pos].getTime();
+		}
+		
+		return timeTab;
+		
+		// TODO - SLUTT
+
+	}
 
 	private static int R = 6371000; // jordens radius
 
